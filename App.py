@@ -19,13 +19,13 @@ if st.button('Predecir'):
 
 coef = model.get_params()['steps'][1][1].coef_
 
-st.metric(label="Efecto 1", value=coef[0]*variable1, delta=-0.5,
+st.metric(label="Efecto 1", value=coef[1]*variable1, delta=-0.5,
      delta_color="inverse")
-st.metric(label="Efecto 2", value=coef[1]*variable2, delta=-0.5,
+st.metric(label="Efecto 2", value=coef[2]*variable2, delta=-0.5,
      delta_color="inverse")
-st.metric(label="Efecto 3", value=coef[2]*variable3, delta=-0.5,
+st.metric(label="Efecto 3", value=coef[3]*variable3, delta=-0.5,
      delta_color="inverse")
-st.metric(label="Efecto 4", value=coef[3]*variable4, delta=-0.5,
+st.metric(label="Efecto 4", value=coef[4]*variable4, delta=-0.5,
      delta_color="inverse")
-st.metric(label="Efecto 5", value=coef[4]*variable5, delta=-0.5,
+st.metric(label="Efecto 5", value=coef[5]*variable5, delta=-0.5,
      delta_color="inverse")
