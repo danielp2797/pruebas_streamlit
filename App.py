@@ -1,17 +1,24 @@
 import streamlit as st
 import numpy as np
 import joblib
+import pandas as pd
 
 np.random.seed(0)
 model = joblib.load('model/pipelines/pipe.joblib')
 
 st.title('Entorno de Pruebas')
-st.header('Historico')
+st.header('Historico Comparativa')
+chart_data = pd.DataFrame(
+     np.random.randn(12, 3),
+     columns=['a', 'b', 'c'])
+
+st.line_chart(chart_data)
+st.header('Historico Descompuesto')
 with st.container():
     st.write("Historico")
 
     # You can call any Streamlit command, including custom components:
-    st.bar_chart(np.random.randn(50, 3))
+    st.bar_chart(np.random.uniform(0, 100, size=(36, 5)))
 st.header('Estimacion')
 
 sl_col1, sl_col2  = st.columns(2)
