@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import joblib
 
+np.random.seed(0)
 model = joblib.load('model/pipelines/pipe.joblib')
 
 st.title('Entorno de Pruebas')
@@ -23,10 +24,6 @@ variable3 = sl_col3.slider('variable3', min_value=0.0, max_value=10.0, step=1.0,
 variable4 = sl_col4.slider('variable4', min_value=0.0, max_value=10.0, step=1.0, help='selecciona valor de variable')
 variable5 = sl_col5.slider('variable5', min_value=0.0, max_value=10.0, step=1.0, help='selecciona valor de variable')
 
-if st.button('Predecir'):
-    valor = model.predict(np.array([variable1, variable2, variable3, variable4, variable5]).reshape(1,-1))
-    st.success(f'valor previsto: {valor}')
-
 coef = model.get_params()['steps'][1][1].coef_
 
 col1, col2, col3, col4, col5 = st.columns(5)
@@ -41,3 +38,6 @@ col4.metric(label="Efecto 4", value=int(coef[3]*variable4), delta=10,
 col5.metric(label="Efecto 5", value=int(coef[4]*variable5), delta=33,
      delta_color="inverse")
 
+col_est1, col_est2, col_est3 = st.columns(3)
+col_est2.metric(label="Estimación", value=int(model.predict(np.array([variable1, variable2, variable3, variable4, variable5]).reshape(1,-1))), delta=0.5,
+   delta_color="inverse")
