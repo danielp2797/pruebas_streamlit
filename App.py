@@ -48,4 +48,3 @@ col5.metric(label="Efecto 5", value=int(coef[4]*variable5), delta=33,
 col_est1, col_est2, col_est3 = st.columns(3)
 col_est2.metric(label="Estimación", value=int(model.predict(np.array([variable1, variable2, variable3, variable4, variable5]).reshape(1,-1))), delta=0.5,
    delta_color="inverse")
-#
